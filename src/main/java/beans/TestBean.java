@@ -1,12 +1,12 @@
 package beans;
 
 import jakarta.inject.Named;
-import jakarta.faces.view.ViewScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import java.io.Serializable;
 
 @Named
-@ViewScoped
+@ApplicationScoped
 public class TestBean implements Serializable {
     private String message = "Hello, JSF & CDI Bean!";
 
