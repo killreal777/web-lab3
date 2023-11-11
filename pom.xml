@@ -20,8 +20,8 @@
     <dependencies>
         <dependency>
             <groupId>jakarta.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <version>3.0.0-M3</version>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <groupId>jakarta.faces</groupId>
@@ -53,6 +53,7 @@
             <artifactId>jaxb-runtime</artifactId>
             <version>3.0.2</version>
         </dependency>
+
     </dependencies>
 
     <build>
