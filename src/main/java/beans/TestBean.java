@@ -1,18 +1,20 @@
 package beans;
 
-import jakarta.faces.bean.ApplicationScoped;
-import jakarta.faces.bean.ManagedBean;
+import jakarta.inject.Named;
+import jakarta.faces.view.ViewScoped;
 
-@ManagedBean(name = "testBean")
-@ApplicationScoped
-public class TestBean {
-    private String name = "CDI test";
+import java.io.Serializable;
 
-    public String getName() {
-        return name;
+@Named
+@ViewScoped
+public class TestBean implements Serializable {
+    private String message = "Hello, JSF & CDI Bean!";
+
+    public String getMessage() {
+        return message;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setMessage(String message) {
+        this.message = message;
     }
 }
