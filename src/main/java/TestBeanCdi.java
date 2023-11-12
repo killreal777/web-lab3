@@ -1,5 +1,4 @@
-package beans;
-
+import jakarta.ejb.EJB;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.ApplicationScoped;
 
@@ -7,8 +6,18 @@ import java.io.Serializable;
 
 @Named
 @ApplicationScoped
-public class TestBean implements Serializable {
-    private String message = "Hello, JSF & CDI Bean!";
+public class TestBeanCdi implements Serializable {
+
+    @EJB
+    private TestBeanEjb testBeanEjb;
+
+    private String message;
+
+
+    public void createTestEntity() {
+        testBeanEjb.createTestEntity(message);
+    }
+
 
     public String getMessage() {
         return message;

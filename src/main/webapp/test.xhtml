@@ -13,7 +13,15 @@
 </h:head>
 
 <h:body>
-    <h:outputText value="#{testBean.message}" />
+    <h:form>
+        <h:panelGrid columns="2">
+            <h:outputText value="Message: " />
+            <h:inputText value="#{testBeanCdi.message}" />
+
+            <h:outputText value="Action: " />
+            <h:commandLink value="Create" action="#{testBeanCdi.createTestEntity()}" />
+        </h:panelGrid>
+    </h:form>
 </h:body>
 
 </html>
