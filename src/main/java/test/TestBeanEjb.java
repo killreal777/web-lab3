@@ -1,3 +1,5 @@
+package test;
+
 import jakarta.ejb.Stateless;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.EntityManager;

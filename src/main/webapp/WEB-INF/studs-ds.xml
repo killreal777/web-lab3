@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<datasources schemaLocation="https://docs.jboss.org/ironjacamr/schema/datasources_1_1.xsd">
+    <datasource jndi-name="java:jboss/studsDS" pool-name="PostgresSQLPool">
+        <connection-url>jdbc:postgresql://localhost:5432/studs</connection-url>
+        <driver>postgresql-42.6.0.jar</driver>
+        <driver-class>org.postgresql.Driver</driver-class>
+        <pool>
+            <max-pool-size>30</max-pool-size>
+        </pool>
+        <security>
+            <user-name>s333291</user-name>
+            <password>qwerty12345</password>
+        </security>
+        <validation>
+            <check-valid-connection-sql>select 1</check-valid-connection-sql>
+        </validation>
+    </datasource>
+</datasources>
+
