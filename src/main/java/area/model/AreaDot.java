@@ -1,37 +1,26 @@
 package area.model;
 
+import lombok.Getter;
+import lombok.Setter;
+import jakarta.persistence.Embeddable;
+
 import java.io.Serializable;
 
-
+@Getter
+@Setter
+@Embeddable
 public class AreaDot implements Serializable {
     private float r;
     private float x;
     private float y;
 
-
-    public float getR() {
-        return r;
+    public AreaDot(float r, float x, float y) {
+        setR(r);
+        setX(x);
+        setY(y);
     }
 
-    public void setR(float r) {
-        this.r = r;
-    }
-
-
-    public float getX() {
-        return x;
-    }
-
-    public void setX(float x) {
-        this.x = x;
-    }
-
-
-    public float getY() {
-        return y;
-    }
-
-    public void setY(float y) {
-        this.y = y;
+    public AreaDot() {
+        // constructor without parameters
     }
 }
