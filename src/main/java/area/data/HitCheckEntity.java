@@ -3,11 +3,11 @@ package area.data;
 import area.model.HitCheck;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
+@NoArgsConstructor
 
 @Entity
 @Table(name = "hit_checks")
@@ -15,6 +15,8 @@ class HitCheckEntity {
 
     @Id
     @GeneratedValue
+    @Getter(value=AccessLevel.PROTECTED)
+    @Setter(value=AccessLevel.PROTECTED)
     private int id;
 
     @Embedded
@@ -23,9 +25,5 @@ class HitCheckEntity {
 
     protected HitCheckEntity(HitCheck hitCheck) {
         setHitCheck(hitCheck);
-    }
-
-    protected HitCheckEntity() {
-
     }
 }

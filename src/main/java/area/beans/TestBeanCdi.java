@@ -1,6 +1,5 @@
 package area.beans;
 
-import jakarta.ejb.EJB;
 import jakarta.inject.Named;
 import jakarta.enterprise.context.ApplicationScoped;
 
