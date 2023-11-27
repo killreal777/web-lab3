@@ -1,14 +1,14 @@
 package area.script;
 
 import area.exceptions.AreaDotValidationException;
-import area.model.AreaDot;
+import area.data.AreaDotData;
 
 
 class AreaDotValidator {
-    protected void validate(AreaDot areaDot) {
-        float r = areaDot.getR();
-        float x = areaDot.getX();
-        float y = areaDot.getY();
+    protected void validate(AreaDotData areaDotData) {
+        float r = areaDotData.getR();
+        float x = areaDotData.getX();
+        float y = areaDotData.getY();
 
         validateR(r);
         validateX(x);

@@ -1,7 +1,5 @@
 package area.data;
 
-import area.model.HitCheck;
-
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,10 +18,10 @@ class HitCheckEntity {
     private int id;
 
     @Embedded
-    private HitCheck hitCheck;
+    private HitCheckData hitCheckData;
 
 
-    protected HitCheckEntity(HitCheck hitCheck) {
-        setHitCheck(hitCheck);
+    protected HitCheckEntity(HitCheckData hitCheckData) {
+        setHitCheckData(hitCheckData);
     }
 }

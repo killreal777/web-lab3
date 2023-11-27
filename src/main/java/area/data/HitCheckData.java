@@ -1,4 +1,4 @@
-package area.model;
+package area.data;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
+import java.time.LocalTime;
 
 @Getter
 @Setter
@@ -14,8 +15,9 @@ import java.io.Serializable;
 @AllArgsConstructor
 
 @Embeddable
-public class AreaDot implements Serializable {
-    private float r;
-    private float x;
-    private float y;
+public class HitCheckData implements Serializable {
+    private LocalTime startTime;
+    private long executionTimeNano;
+    private AreaDotData areaDotData;
+    private boolean isHit;
 }

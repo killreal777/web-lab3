@@ -1,7 +1,7 @@
 package area.script;
 
-import area.model.AreaDot;
-import area.model.HitCheck;
+import area.data.AreaDotData;
+import area.data.HitCheckData;
 
 import jakarta.inject.Named;
 
@@ -24,23 +24,23 @@ public class HitCheckScriptBean {
 
     /**
      * Executes hit check script.
-     * Receives AreaDot instance.
-     * Returns HitCheck instance.
+     * Receives AreaDotData instance.
+     * Returns HitCheckData instance.
      */
-    public HitCheck execute(AreaDot areaDot) {
+    public HitCheckData execute(AreaDotData areaDotData) {
         long startTimeNano = System.nanoTime();
         LocalTime startTime = LocalTime.now();
 
-        validateAreaDot(areaDot);
-        boolean isHit = hitChecker.isHit(areaDot);
+        validateAreaDot(areaDotData);
+        boolean isHit = hitChecker.isHit(areaDotData);
 
         long endTimeNano = System.nanoTime();
         long executionTimeNano = startTimeNano - endTimeNano;
 
-        return new HitCheck(startTime, executionTimeNano, areaDot, isHit);
+        return new HitCheckData(startTime, executionTimeNano, areaDotData, isHit);
     }
 
-    private void validateAreaDot(AreaDot areaDot) {
-        areaDotValidator.validate(areaDot);
+    private void validateAreaDot(AreaDotData areaDotData) {
+        areaDotValidator.validate(areaDotData);
     }
 }

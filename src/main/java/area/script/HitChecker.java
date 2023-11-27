@@ -1,13 +1,13 @@
 package area.script;
 
-import area.model.AreaDot;
+import area.data.AreaDotData;
 
 
 class HitChecker {
-    protected boolean isHit(AreaDot areaDot) {
-        final float r = areaDot.getR();
-        final float x = areaDot.getX();
-        final float y = areaDot.getY();
+    protected boolean isHit(AreaDotData areaDotData) {
+        final float r = areaDotData.getR();
+        final float x = areaDotData.getX();
+        final float y = areaDotData.getY();
 
         return isHitQuarterCircle(r, x, y) || isHitTriangle(r, x, y) || isHitRectangle(r, x, y);
     }

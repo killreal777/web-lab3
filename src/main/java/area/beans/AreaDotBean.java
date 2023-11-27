@@ -1,7 +1,7 @@
 package area.beans;
 
 import area.data.HitCheckServiceBean;
-import area.model.AreaDot;
+import area.data.AreaDotData;
 import area.script.HitCheckScriptBean;
 
 import lombok.Getter;
@@ -45,7 +45,7 @@ public class AreaDotBean/*TODO better name*/ implements Serializable {
      */
     public void executeHitCheckScript() {
         validateNotNull();
-        AreaDot areaDot = new AreaDot(r, x, y);
+        AreaDotData areaDotData = new AreaDotData(r, x, y);
     }
 
 
