@@ -53,18 +53,10 @@ public class MainPageBean implements Serializable {
      * Updates resultsList.
      */
     public void checkHit() {
-        System.out.println(r);
-        System.out.println(x);
-        System.out.println(y);
-        try {
-            AreaDotData areaDotData = new AreaDotData(r, x, y);
-            HitCheckData hitCheckData = hitCheckScript.execute(areaDotData);
-            hitCheckService.add(hitCheckData);
-            updateResultsList();
-        } catch (RuntimeException e) {
-            System.out.println(e.getClass());
-            System.out.println(e.getMessage());
-        }
+        AreaDotData areaDotData = new AreaDotData(r, x, y);
+        HitCheckData hitCheckData = hitCheckScript.execute(areaDotData);
+        hitCheckService.add(hitCheckData);
+        updateResultsList();
     }
 
     /**
