@@ -16,21 +16,24 @@
     <h:form>
         <h:panelGrid columns="2">
             <h:outputText value="R: " />
-            <h:inputText value="#{areaDotBean.r}" />
+            <h:inputText value="#{mainPageBean.r}" validatorId="rValidator" />
+
             <h:outputText value="X: " />
-            <h:inputText value="#{areaDotBean.x}" />
+            <h:inputText value="#{mainPageBean.x}" validatorId="xValidator" />
+
             <h:outputText value="Y: " />
-            <h:inputText value="#{areaDotBean.y}" />
+            <h:inputText value="#{mainPageBean.y}">
+                <f:validateRequired />
+            </h:inputText>
 
-            <h:commandLink value="Check" action="#{areaDotBean.checkHit()}" />
+            <h:commandLink value="Check" action="#{mainPageBean.checkHit()}" />
             <h:outputText value=" " />
-            <h:commandLink value="Clean" action="#{areaDotBean.cleanResults()}" />
+            <h:commandLink value="Clean" action="#{mainPageBean.cleanResults()}" />
             <h:outputText value=" " />
-            <h:commandLink value="Update" action="#{areaDotBean.updateResultsList()}" />
+            <h:commandLink value="Update" action="#{mainPageBean.updateResultsList()}" />
             <h:outputText value=" " />
 
-
-            <h:dataTable value="#{areaDotBean.resultsList}" var="results">
+            <h:dataTable value="#{mainPageBean.resultsList}" var="results">
                 <h:column>
                     <f:facet name="header">start time</f:facet>
                     <h:outputText value="#{results.startTime}"/>
@@ -55,8 +58,8 @@
                     <f:facet name="header">result</f:facet>
                     <h:outputText value="#{results.hit}"/>
                 </h:column>
-
             </h:dataTable>
+
         </h:panelGrid>
     </h:form>
 </h:body>
