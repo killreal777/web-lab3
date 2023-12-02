@@ -3,14 +3,16 @@ package area.script;
 import area.data.AreaDotData;
 import area.data.HitCheckData;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 /**
  * CDI bean. Implements hit check logic.
  */
 @Named
+@ApplicationScoped
 public class HitCheckScriptBean {
     private final AreaDotValidator areaDotValidator;
     private final HitChecker hitChecker;
@@ -27,15 +29,15 @@ public class HitCheckScriptBean {
      * Receives AreaDotData instance.
      * Returns HitCheckData instance.
      */
-    public HitCheckData execute(AreaDotData areaDotData) {
+    public HitCheckData executeHitCheckScript(AreaDotData areaDotData) {
         long startTimeNano = System.nanoTime();
-        LocalTime startTime = LocalTime.now();
+        LocalDateTime startTime = LocalDateTime.now();
 
         validateAreaDot(areaDotData);
         boolean isHit = hitChecker.isHit(areaDotData);
 
         long endTimeNano = System.nanoTime();
-        long executionTimeNano = startTimeNano - endTimeNano;
+        long executionTimeNano = endTimeNano - startTimeNano;
 
         return new HitCheckData(startTime, executionTimeNano, areaDotData, isHit);
     }

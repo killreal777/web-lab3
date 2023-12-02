@@ -40,6 +40,6 @@ public class HitCheckServiceBean {
      * Deletes all HitCheckData records from database.
      */
     public void clean() {
-        entityManager.createQuery("delete (select entity from HitCheckEntity entity)").executeUpdate();
+        entityManager.createNativeQuery("truncate table hit_checks").executeUpdate();
     }
 }

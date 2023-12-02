@@ -1,5 +1,6 @@
 package area.beans;
 
+import area.data.HitCheckData;
 import area.data.HitCheckServiceBean;
 import area.data.AreaDotData;
 import area.script.HitCheckScriptBean;
@@ -14,6 +15,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ejb.EJB;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -28,12 +30,14 @@ public class AreaDotBean/*TODO better name*/ implements Serializable {
     @EJB
     @Getter(value=AccessLevel.PRIVATE)
     @Setter(value=AccessLevel.PRIVATE)
-    HitCheckServiceBean hitCheckServiceBean;
+    HitCheckServiceBean hitCheckService;
 
     @Inject
     @Getter(value=AccessLevel.PRIVATE)
     @Setter(value=AccessLevel.PRIVATE)
-    HitCheckScriptBean hitCheckScriptBean;
+    HitCheckScriptBean hitCheckScript;
+
+    private List<HitCheckData> resultsList;
 
     private Float r;
     private Float x;
@@ -43,11 +47,21 @@ public class AreaDotBean/*TODO better name*/ implements Serializable {
     /**
      * Executes hit check script
      */
-    public void executeHitCheckScript() {
-        validateNotNull();
+    public void checkHit() {
         AreaDotData areaDotData = new AreaDotData(r, x, y);
+        HitCheckData hitCheckData = hitCheckScript.executeHitCheckScript(areaDotData);
+        hitCheckService.add(hitCheckData);
+        updateResultsList();
     }
 
+    public void cleanResults() {
+        hitCheckService.clean();
+        updateResultsList();
+    }
+
+    public void updateResultsList() {
+        resultsList = hitCheckService.getAll();
+    }
 
     private void validateNotNull() {
 
