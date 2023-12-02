@@ -2,7 +2,6 @@ package area.script;
 
 import area.data.AreaDotData;
 
-
 class HitChecker {
     protected boolean isHit(AreaDotData areaDotData) {
         final float r = areaDotData.getR();

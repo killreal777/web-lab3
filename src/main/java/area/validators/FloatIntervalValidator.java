@@ -9,10 +9,12 @@ abstract class FloatIntervalValidator extends FloatValidator {
     private final float min;
     private final float max;
 
+
     protected FloatIntervalValidator(float min, float max) {
         this.min = min;
         this.max = max;
     }
+
 
     /**
      * Validation condition method.
@@ -30,5 +32,3 @@ abstract class FloatIntervalValidator extends FloatValidator {
         return "(" + min + "; " + max + ")";
     }
 }
-
-

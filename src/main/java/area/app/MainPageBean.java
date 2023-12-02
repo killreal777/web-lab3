@@ -9,10 +9,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.AccessLevel;
+
 import jakarta.inject.Named;
 import jakarta.inject.Inject;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.ejb.EJB;
+import jakarta.annotation.PostConstruct;
 
 import java.io.Serializable;
 import java.util.List;
@@ -45,6 +47,12 @@ public class MainPageBean implements Serializable {
     private Float r;
     private Float x;
     private Float y;
+
+
+    @PostConstruct
+    public void init() {
+        updateResultsList();
+    }
 
 
     /**

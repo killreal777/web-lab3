@@ -6,7 +6,7 @@ import area.data.HitCheckData;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Named;
 
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 /**
  * CDI bean. Represents hit check script.
@@ -25,7 +25,7 @@ public class HitCheckScriptBean {
      */
     public HitCheckData execute(AreaDotData areaDotData) {
         long startTimeNano = System.nanoTime();
-        LocalDateTime startTime = LocalDateTime.now();
+        LocalTime startTime = LocalTime.now();
 
         boolean isHit = hitChecker.isHit(areaDotData);
 
