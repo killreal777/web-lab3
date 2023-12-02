@@ -42,7 +42,6 @@ public class MainPageBean implements Serializable {
 
     private List<HitCheckData> resultsList;
 
-    // TODO convertors and validators.
     private Float r;
     private Float x;
     private Float y;
