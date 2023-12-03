@@ -24,9 +24,9 @@ abstract class FloatValidator implements Validator<Object> {
 
 
     /**
-     * Validates float values by condition, defined in isValid abstract method.
-     * In case of null, invalid value or incorrect number format
-     * throws jakarta.faces.validator.ValidationException
+     * Parses float value from specified Object.
+     * Validates float value by condition, defined in isValid abstract method.
+     * In case of null, invalid value or incorrect number format throws jakarta.faces.validator.ValidatorException
      * with message, defined in getStandardErrorMessage abstract method.
      */
     @Override
@@ -35,15 +35,23 @@ abstract class FloatValidator implements Validator<Object> {
         if (!isValid(number)) throw new ValidatorException(getStandardFacesErrorMessage());
     }
 
+    /**
+     * Parses float value from object.
+     * In case of null or incorrect number format throws jakarta.faces.validator.ValidatorException.
+     * Used for float validation.
+     */
     private float parseFloat(Object o) throws ValidatorException {
         try {
-            if (o == null) throw new ValidatorException(getStandardFacesErrorMessage());
             return Float.parseFloat(o.toString());
-        } catch (NumberFormatException e) {
+        } catch (NumberFormatException | NullPointerException e) {
             throw new ValidatorException(getStandardFacesErrorMessage());
         }
     }
 
+    /**
+     * Returns FacesMessage with standard error message.
+     * Used for jakarta.faces.validator.ValidatorException creating.
+     */
     private FacesMessage getStandardFacesErrorMessage() {
         return new FacesMessage(getStandardErrorMessage());
     }

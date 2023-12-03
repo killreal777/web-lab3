@@ -1,7 +1,7 @@
 package area.validators;
 
 /**
- * Package-private abstract class for @FacesValidator classes.
+ * Package-private abstract class for @FacesValidator child classes.
  * Validates if float number in (min; max) interval.
  * Interval boundaries are NOT included.
  */
@@ -18,6 +18,8 @@ abstract class FloatIntervalValidator extends FloatValidator {
 
     /**
      * Validation condition method.
+     * Validates if float number in (min; max) interval.
+     * Interval boundaries are NOT included.
      */
     @Override
     protected boolean isValid(float number) {
@@ -26,6 +28,7 @@ abstract class FloatIntervalValidator extends FloatValidator {
 
     /**
      * Method for defining standard error message.
+     * Returns string representation of (min; max) interval.
      */
     @Override
     protected String getStandardErrorMessage() {
