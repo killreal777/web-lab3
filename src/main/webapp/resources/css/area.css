@@ -13,3 +13,11 @@ svg circle {
 svg text {
     font-size: 16px;
 }
+
+.hit-dot {
+    color: darkslategrey;
+}
+
+.fail-dot {
+    color: #8c143c;
+}

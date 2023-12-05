@@ -62,7 +62,6 @@ function printDot(x, y, r) {
     const dotCoordinateX = centerCoordinate + dotOffsetX;
     const dotCoordinateY = centerCoordinate - dotOffsetY;
     createDotHtml(dotCoordinateX, dotCoordinateY);
-
 }
 
 function createDotHtml(cx, cy) {
@@ -95,6 +94,3 @@ function getDotOffset(coordinateValue, radiusValue) {
 
     return dotOffset;
 }
-
-
-
