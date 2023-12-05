@@ -1,0 +1,49 @@
+.input {
+    background-color: #F8F8F8;
+    color: #282828;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: #282828;
+    border-style: solid;
+    cursor: pointer;
+}
+
+.text {
+    height: 30px;
+    width: 100px;
+}
+
+.menu {
+    height: 35px;
+    width: 105px;
+}
+
+.button {
+    height: 30px;
+    width: 300px;
+}
+
+
+input:hover {
+    background-color: #FFFFFF;
+}
+
+input:focus {
+    background-color: #EEEEEE;
+}
+
+input:active {
+    border-width: 2px;
+    border-color: #222222;
+}
+
+input[type="text"]::placeholder {
+    color: #A0A0A0;
+}
+
+
+#err-msg {
+    height: 10px;
+    font-size: 18px;
+}
+

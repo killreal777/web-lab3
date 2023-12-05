@@ -1,0 +1,69 @@
+<form id="area-check-request-form">
+    <input type="hidden" name="request-type" value="area-check-request">
+    <table class="form-table">
+        <tr>
+            <td>
+                <label for="r">Радиус</label><br>
+                <input id="r" type="text" name="r" placeholder="(2 ... 5)" class="text-field"><br>
+            </td>
+            <td>
+                <label for="x">Координата X</label><br>
+                <input id="x" type="text" name="x" placeholder="(-3 ... 5)" class="text-field"><br>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <table>
+                    <tr id="y-label-row">
+                        <td colspan="9" class="y-label"><label>Координата Y</label></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input id="y-3" type="radio" name="y" value="-3"><br>
+                            <label for="y-3">-3</label>
+                        </td>
+                        <td>
+                            <input id="y-2" type="radio" name="y" value="-2"><br>
+                            <label for="y-2">-2</label>
+                        </td>
+                        <td>
+                            <input id="y-1" type="radio" name="y" value="-1"><br>
+                            <label for="y-1">-1</label>
+                        </td>
+                        <td>
+                            <input id="y+0" type="radio" name="y" value="0"><br>
+                            <label for="y+0">0</label>
+                        </td>
+                        <td>
+                            <input id="y+1" type="radio" name="y" value="1"><br>
+                            <label for="y+1">1</label>
+                        </td>
+                        <td>
+                            <input id="y+2" type="radio" name="y" value="2"><br>
+                            <label for="y+2">2</label>
+                        </td>
+                        <td>
+                            <input id="y+3" type="radio" name="y" value="3"><br>
+                            <label for="y+3">3</label>
+                        </td>
+                        <td>
+                            <input id="y+4" type="radio" name="y" value="4"><br>
+                            <label for="y+4">4</label>
+                        </td>
+                        <td>
+                            <input id="y+5" type="radio" name="y" value="5"><br>
+                            <label for="y+5">5</label>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input id="submit" type="button" value="Отправить">
+                <input id="clear" type="button" value="Очистить"><br>
+                <span id="err-msg"></span>
+            </td>
+        </tr>
+    </table>
+</form>

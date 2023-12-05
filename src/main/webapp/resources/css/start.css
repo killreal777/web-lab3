@@ -1,26 +1,3 @@
-html {
-    height: 100%;
-    width: 90%;
-    text-align: center;
-    margin: auto;
-    font-family: "Segoe UI", serif;
-    font-size: 20pt;
-    color: #222222;
-    background-color: #EEEEEE;
-}
-
-table.container {
-    width: 100%;
-    border-width: 0;
-    border-spacing: 10pt;
-}
-
-.block {
-    box-shadow: 0 0 12px rgba(128, 128, 128, 0.3);
-    background-color: #EEEEEE;
-    border-radius: 40px;
-}
-
 .header {
     height: 90pt;
     font-family: "Segoe UI Black", serif;

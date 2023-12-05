@@ -17,6 +17,7 @@ import jakarta.ejb.EJB;
 import jakarta.annotation.PostConstruct;
 
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -81,5 +82,6 @@ public class MainPageBean implements Serializable {
      */
     public void updateResultsList() {
         resultsList = hitCheckService.getAll();
+        Collections.reverse(resultsList);
     }
 }

@@ -1,0 +1,15 @@
+.line {
+    stroke: black;
+}
+
+.area {
+    fill: #d6d6f0;
+}
+
+svg circle {
+    fill: black;
+}
+
+svg text {
+    font-size: 16px;
+}

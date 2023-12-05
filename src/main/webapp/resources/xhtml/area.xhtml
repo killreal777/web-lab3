@@ -1,0 +1,56 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html">
+    <h:outputStylesheet library="css" name="area.css"/>
+
+    <svg id="area-svg" width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+        <!-- rectangle, triangle, quarter circle -->
+        <polygon points="150,200 150,150 50,150 50,200" class="area" />
+        <polygon points="200,150 150,150 150,200" class="area" />
+        <path d="M50,150 A100,100 90 0,1 150,50 L 150,150 Z" class="area" />
+
+        <!-- axes Ox and Oy -->
+        <line x1="15"  x2="275" y1="150" y2="150" class="line" />
+        <line x1="150" x2="150" y1="25"  y2="285" class="line" />
+
+        <!-- arrows for axes Ox and Oy -->
+        <polygon points="290,150 275,146 275,154" class="arrow" />
+        <polygon points="150,10  146,25  154,25"  class="arrow" />
+
+        <!-- dots on axis Ox -->
+        <circle id="dot-x-m2" cx="50"  cy="150" r="2" />
+        <circle id="dot-x-m1" cx="100" cy="150" r="2" />
+        <circle id="dot-x-p1" cx="200" cy="150" r="2" />
+        <circle id="dot-x-p2" cx="250" cy="150" r="2" />
+
+        <!-- dots on axis Oy -->
+        <circle id="dot-y-p2" cx="150" cy="50"  r="2" />
+        <circle id="dot-y-p1" cx="150" cy="100" r="2" />
+        <circle id="dot-y-m1" cx="150" cy="200" r="2" />
+        <circle id="dot-y-m2" cx="150" cy="250" r="2" />
+
+        <!-- center dot -->
+        <circle id="dot-center" cx="150" cy="150" r="2" />
+
+        <!-- axes labels -->
+        <text x="285" y="140">X</text>
+        <text x="160" y="15">Y</text>
+
+        <!-- r values on oX axis -->
+        <text x="40" y="140">-R</text>
+        <text x="85" y="140">-R/2</text>
+        <text x="190" y="140">R/2</text>
+        <text x="245" y="140">R</text>
+
+        <!-- r values on oY axis -->
+        <text x="160" y="52.5">R</text>
+        <text x="160" y="102.5">R/2</text>
+        <text x="160" y="202.5">-R/2</text>
+        <text x="160" y="252.5">-R</text>
+
+        <!-- hit dot -->
+        <circle cx="150" cy="150" r="2.5" id="hit-dot" />
+
+    </svg>
+</ui:composition>
