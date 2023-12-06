@@ -3,7 +3,7 @@
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core">
 
-    <h:dataTable value="#{mainPageBean.resultsList}" var="results">
+    <h:dataTable id="results-table" value="#{mainPageBean.resultsList}" var="results">
         <h:column>
             <f:facet name="header">start time</f:facet>
             <h:outputText value="#{results.startTime}"/>
@@ -18,15 +18,15 @@
         </h:column>
         <h:column>
             <f:facet name="header">x</f:facet>
-            <h:outputText value="#{results.areaDotData.x}"/>
+            <h:outputText styleClass="x-column" value="#{results.areaDotData.x}"/>
         </h:column>
         <h:column>
             <f:facet name="header">y</f:facet>
-            <h:outputText value="#{results.areaDotData.y}"/>
+            <h:outputText styleClass="y-column" value="#{results.areaDotData.y}"/>
         </h:column>
         <h:column>
             <f:facet name="header">result</f:facet>
-            <h:outputText value="#{results.hit}"/>
+            <h:outputText styleClass="result-column" value="#{results.hit}"/>
         </h:column>
     </h:dataTable>
 </ui:composition>
