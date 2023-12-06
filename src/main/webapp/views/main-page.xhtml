@@ -19,19 +19,17 @@
     <table class="container">
         <tr>
             <td class="left-block block">
-                <ui:include src="resources/xhtml/area.xhtml" />
+                <ui:include src="area-component.xhtml" />
             </td>
 
             <td class="right-block block">
-                <ui:include src="resources/xhtml/forms.xhtml" />
-
-                <h:link class="link" value="Start page" outcome="start-page"/>
+                <ui:include src="forms-component.xhtml" />
             </td>
         </tr>
 
         <tr>
             <td class="down-block block" colspan="2">
-                <ui:include src="resources/xhtml/results.xhtml" />
+                <ui:include src="table-component.xhtml" />
             </td>
         </tr>
     </table>
@@ -40,7 +38,7 @@
 
 <h:outputScript library="js" name="math.js"/>
 <h:outputScript library="js" name="click.js"/>
-<h:outputScript library="js" name="dots.js"/>
+<h:outputScript library="js" name="area.js"/>
 <h:outputScript library="js" name="table.js"/>
 <h:outputScript library="js" name="listeners.js"/>
 

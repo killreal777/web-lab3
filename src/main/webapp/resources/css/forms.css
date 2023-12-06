@@ -6,6 +6,7 @@
     border-color: #282828;
     border-style: solid;
     cursor: pointer;
+    font-size: 14pt;
 }
 
 .text {
@@ -34,13 +35,8 @@ input:focus {
 
 input:active {
     border-width: 2px;
-    border-color: #222222;
+    border-color: #282828;
 }
-
-input[type="text"]::placeholder {
-    color: #A0A0A0;
-}
-
 
 #err-msg {
     height: 10px;

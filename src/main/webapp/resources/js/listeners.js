@@ -1,12 +1,11 @@
 //import click from "./click.js";
 //because of jsf
 
-const area = document.getElementById("area-svg");
 const xInput = document.getElementById("check-form:x");
 const yInput = document.getElementById("check-form:y");
 const checkButton = document.getElementById("check-form:check-button");
 
-area.onclick = function(event) {
+document.getElementById("area-svg").onclick = function(event) {
     let areaDot = click.getAreaDot(event);
     if (areaDot.r != null) {
         xInput.value = areaDot.x;
@@ -16,33 +15,17 @@ area.onclick = function(event) {
 };
 
 
-
-//import dots from "./dots.js";
-//import table from "./table.js";
+//import dots from "./area.js";
 //because of jsf
 
 document.getElementById("check-form:r").onchange = function(event) {
-    dots.deleteAllDots();
-    printAllDots()
+    area.update();
 }
 
 document.getElementById("results-table").onclick = function(event) {
-    dots.deleteAllDots();
-    printAllDots();
+    area.update();
 }
 
 window.onload = function() {
-    printAllDots();
+    area.update();
 };
-
-
-
-function printAllDots() {
-    const dotResults = table.getAllDotResults();
-    const currentRadius = document.getElementById("check-form:r").value;
-
-    for (const dot of dotResults) {
-        dots.printDot(dot.x.toString(), dot.y.toString(), currentRadius, dot.isHit);
-    }
-}
-

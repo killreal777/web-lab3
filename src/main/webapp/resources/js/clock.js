@@ -1,27 +1,38 @@
-function currentTime() {
-    let date = new Date();
-    let day = date.getDate();
-    let month = date.getMonth() + 1;
-    let year = date.getFullYear();
-    let hour = date.getHours();
-    let min = date.getMinutes();
-    let sec = date.getSeconds();
-    day = updateTime(day);
-    month = updateTime(month);
-    hour = updateTime(hour);
-    min = updateTime(min);
-    sec = updateTime(sec);
-    document.getElementById("clock").innerText = hour + ":" + min + ":" + sec + "\n" + day + "." + month + "." + year;
-    setTimeout(function(){ currentTime() }, 1000);
+const clock = document.getElementById("clock");
+const updateTimeSec = 1;
+
+function showCurrentDateTime() {
+    const timeout = updateTimeSec * 1000;
+    clock.innerText = currentDateTimeToString();
+    setTimeout(function(){ showCurrentDateTime() }, timeout);
 }
 
-function updateTime(k) {
-    if (k < 10) {
-        return "0" + k;
-    }
-    else {
-        return k;
-    }
+showCurrentDateTime();
+
+
+function currentDateTimeToString() {
+    let currentDateTime = new Date();
+    return dateTimeToString(currentDateTime)
 }
 
-currentTime();
+function dateTimeToString(date) {
+    return timeToString(date) + "\n" + dateToString(date);
+}
+
+function timeToString(date) {
+    let hour = insertLeadingZeros(date.getHours());
+    let min = insertLeadingZeros(date.getMinutes());
+    let sec = insertLeadingZeros(date.getSeconds());
+    return hour + ":" + min + ":" + sec;
+}
+
+function dateToString(date) {
+    let day = insertLeadingZeros(date.getDate());
+    let month = insertLeadingZeros(date.getMonth() + 1);
+    let year = insertLeadingZeros(date.getFullYear());
+    return day + "." + month + "." + year;
+}
+
+function insertLeadingZeros(number) {
+    return (number < 10) ? ("0" + number) : (number);
+}
