@@ -1,7 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml"
                 xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
 
     <h:outputStylesheet library="css" name="forms.css"/>
 
@@ -18,13 +18,13 @@
             </h:selectOneMenu>
 
             <h:outputText value="Coordinate X: "/>
-            <h:inputText id="x" value="#{mainPageBean.x}" styleClass="input text"
+            <h:inputText id="x" value="#{mainPageBean.x}" styleClass="input text" a:placeholder="(-3; 5)"
                          required="true" requiredMessage="X: required. " converterMessage="X: number. ">
                 <f:validator validatorId="xValidator"/>
             </h:inputText>
 
             <h:outputText value="Coordinate Y: "/>
-            <h:inputText id="y" value="#{mainPageBean.y}" styleClass="input text"
+            <h:inputText id="y" value="#{mainPageBean.y}" styleClass="input text" a:placeholder="(-4; 4)"
                          required="true" requiredMessage="Y: required. " converterMessage="Y: number. ">
                 <f:validator validatorId="yValidator"/>
             </h:inputText>

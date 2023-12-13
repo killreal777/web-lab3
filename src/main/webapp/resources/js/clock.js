@@ -1,5 +1,5 @@
 const clock = document.getElementById("clock");
-const updateTimeSec = 1;
+const updateTimeSec = 7;
 
 function showCurrentDateTime() {
     const timeout = updateTimeSec * 1000;

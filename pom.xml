@@ -6,7 +6,7 @@
 
     <groupId>itmo</groupId>
     <artifactId>web-lab3</artifactId>
-    <version>TRY</version>
+    <version>FINAL</version>
     <name>web-lab3</name>
     <packaging>war</packaging>
 
@@ -67,6 +67,7 @@
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <version>1.18.28</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
