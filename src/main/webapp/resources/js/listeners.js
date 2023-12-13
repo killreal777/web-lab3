@@ -22,10 +22,6 @@ document.getElementById("check-form:r").onchange = function(event) {
     area.update();
 }
 
-document.getElementById("results-table").onclick = function(event) {
-    area.update();
-}
-
 window.onload = function() {
     area.update();
 };

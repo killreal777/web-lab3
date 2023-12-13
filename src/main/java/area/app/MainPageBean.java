@@ -45,9 +45,9 @@ public class MainPageBean implements Serializable {
 
     private List<HitCheckData> resultsList;
 
-    private Float r;
-    private Float x;
-    private Float y;
+    private float r;
+    private float x;
+    private float y;
 
 
     @PostConstruct
@@ -83,5 +83,27 @@ public class MainPageBean implements Serializable {
     public void updateResultsList() {
         resultsList = hitCheckService.getAll();
         Collections.reverse(resultsList);
+    }
+
+
+    /**
+     * X setter with negative zero fixing.
+     */
+    public void setX(float x) {
+        this.x = fixNegativeZero(x);
+    }
+
+    /**
+     * Y setter with negative zero fixing.
+     */
+    public void setY(float y) {
+        this.y = fixNegativeZero(y);
+    }
+
+    /**
+     * Negative zero fix method.
+     */
+    private float fixNegativeZero(float value) {
+        return (value == 0) ? 0 : value;
     }
 }

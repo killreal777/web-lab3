@@ -1,33 +1,33 @@
 const table = {
     getAllDotResults : function () {
         let results = [];
-        let linesAmount = getLinesAmount();
+        let rowsAmount = getRowsAmount();
 
-        for (let i = 0; i < linesAmount; i++) {
-            results.push(getDotResultByLineIndex(i));
+        for (let rowIndex = 0; rowIndex < rowsAmount; rowIndex++) {
+            results.push(getDotResultByRowIndex(rowIndex));
         }
 
         return results;
     },
 
     getLastDotResult : function () {
-        return getDotResultByLineIndex(0);
+        return getDotResultByRowIndex(0);
     }
 }
 
 //export default table;
 //because of jsf
 
-
+const startTimeColumn = document.getElementsByClassName("start-time-column");
 const xColumn = document.getElementsByClassName("x-column");
 const yColumn = document.getElementsByClassName("y-column");
 const resultColumn = document.getElementsByClassName("result-column");
 
-function getLinesAmount() {
+function getRowsAmount() {
     return resultColumn.length;
 }
 
-function getDotResultByLineIndex(i) {
+function getDotResultByRowIndex(i) {
     let x = parseFloat(xColumn[i].innerHTML);
     let y = parseFloat(yColumn[i].innerHTML);
     let isHit = resultColumn[i].innerHTML === "true";

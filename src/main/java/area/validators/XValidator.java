@@ -10,4 +10,9 @@ public class XValidator extends FloatIntervalValidator {
     public XValidator() {
         super(MIN, MAX);
     }
+
+    @Override
+    protected String getStandardErrorMessage() {
+        return "X: (-3; 5). ";
+    }
 }

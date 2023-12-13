@@ -6,7 +6,7 @@
     <h:dataTable id="results-table" value="#{mainPageBean.resultsList}" var="results">
         <h:column>
             <f:facet name="header">start time</f:facet>
-            <h:outputText value="#{results.startTime}"/>
+            <h:outputText styleClass="start-time-column" value="#{results.startTime}"/>
         </h:column>
         <h:column>
             <f:facet name="header">execution time</f:facet>
