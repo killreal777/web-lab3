@@ -1,0 +1,32 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:dataTable id="results-table" value="#{mainPageBean.resultsList}" var="results">
+        <h:column>
+            <f:facet name="header">start time</f:facet>
+            <h:outputText styleClass="start-time-column" value="#{results.startTime}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">execution time</f:facet>
+            <h:outputText value="#{results.executionTimeNano}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">r</f:facet>
+            <h:outputText value="#{results.areaDotData.r}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">x</f:facet>
+            <h:outputText styleClass="x-column" value="#{results.areaDotData.x}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">y</f:facet>
+            <h:outputText styleClass="y-column" value="#{results.areaDotData.y}"/>
+        </h:column>
+        <h:column>
+            <f:facet name="header">result</f:facet>
+            <h:outputText styleClass="result-column" value="#{results.hit}"/>
+        </h:column>
+    </h:dataTable>
+</ui:composition>

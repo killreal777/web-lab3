@@ -1,0 +1,46 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:a="http://xmlns.jcp.org/jsf/passthrough">
+
+    <h:outputStylesheet library="css" name="forms.css"/>
+
+    <h:form id="check-form">
+        <h:panelGrid columns="2">
+            <h:outputText value="Radius: "/>
+            <h:selectOneMenu id="r" value="#{mainPageBean.r}" styleClass="input menu"
+                             required="true" requiredMessage="R: required. " converterMessage="R: number. ">
+                <f:selectItem itemValue="1" />
+                <f:selectItem itemValue="2" />
+                <f:selectItem itemValue="3" />
+                <f:selectItem itemValue="4" />
+                <f:selectItem itemValue="5" />
+            </h:selectOneMenu>
+
+            <h:outputText value="Coordinate X: "/>
+            <h:inputText id="x" value="#{mainPageBean.x}" styleClass="input text" a:placeholder="(-3; 5)"
+                         required="true" requiredMessage="X: required. " converterMessage="X: number. ">
+                <f:validator validatorId="xValidator"/>
+            </h:inputText>
+
+            <h:outputText value="Coordinate Y: "/>
+            <h:inputText id="y" value="#{mainPageBean.y}" styleClass="input text" a:placeholder="(-4; 4)"
+                         required="true" requiredMessage="Y: required. " converterMessage="Y: number. ">
+                <f:validator validatorId="yValidator"/>
+            </h:inputText>
+        </h:panelGrid>
+
+        <h:message for="r"/>
+        <h:message for="x"/>
+        <h:message for="y"/>
+        <br/>
+
+        <h:commandButton id="check-button" value="Check" action="#{mainPageBean.checkHit()}" styleClass="input button"/>
+    </h:form>
+
+    <h:form>
+        <h:commandButton value="Clean" action="#{mainPageBean.cleanResults()}" styleClass="input button"/>
+    </h:form>
+
+    <h:button value="Start page" outcome="start-page" styleClass="input button"/>
+</ui:composition>

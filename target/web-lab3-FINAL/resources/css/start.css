@@ -1,0 +1,15 @@
+.header {
+    height: 90pt;
+    font-family: "Segoe UI Black", serif;
+    font-size: 36pt;
+}
+
+#clock {
+    height: 240pt;
+    font-size: 72pt;
+    font-family: "Segoe UI Light", serif;
+}
+
+.link {
+    font-size: 24pt;
+}
