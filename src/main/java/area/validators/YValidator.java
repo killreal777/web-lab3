@@ -14,6 +14,5 @@ public class YValidator extends FloatIntervalValidator {
     @Override
     protected String getStandardErrorMessage() {
         return "Y: (-4; 4). ";
-
     }
 }
