@@ -9,7 +9,8 @@ import jakarta.inject.Named;
 import java.time.LocalTime;
 
 /**
- * CDI bean. Represents hit check script.
+ * CDI bean implementing main business logic.
+ * Represents script that checks if the dot hits the area, registers start time and execution time.
  */
 @Named
 @ApplicationScoped
@@ -20,9 +21,6 @@ public class HitCheckScriptBean {
         this.hitChecker = new HitChecker();
     }
 
-    /**
-     * Executes hit check script.
-     */
     public HitCheckData execute(AreaDotData areaDotData) {
         long startTimeNano = System.nanoTime();
         LocalTime startTime = LocalTime.now();

@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * EJB bean. Implements hit check service logic.
+ * EJB bean implementing hit check service logic.
  */
 @Stateless
 public class HitCheckServiceBean {

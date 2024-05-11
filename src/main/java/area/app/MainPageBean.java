@@ -21,8 +21,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * CDI bean. For main page.
- * Provides: fields for area dot input, list for results output, methods for user actions.
+ * CDI bean for main page. Provides fields for area dot input, list for results output, methods for user actions.
  */
 
 @Getter
@@ -57,9 +56,8 @@ public class MainPageBean implements Serializable {
 
 
     /**
-     * Executes hit check script with inputted parameters.
-     * Adds result to the database.
-     * Updates resultsList.
+     * Executes hit check script with inputted parameters,
+     * adds result to the database, updates results list.
      */
     public void checkHit() {
         AreaDotData areaDotData = new AreaDotData(r, x, y);
@@ -69,8 +67,7 @@ public class MainPageBean implements Serializable {
     }
 
     /**
-     * Deletes all results from database.
-     * Cleans resultsList.
+     * Deletes all results from database, cleans results list.
      */
     public void cleanResults() {
         hitCheckService.clean();
@@ -78,7 +75,7 @@ public class MainPageBean implements Serializable {
     }
 
     /**
-     * Updates resultsList with data from database.
+     * Updates results list with data from database.
      */
     public void updateResultsList() {
         resultsList = hitCheckService.getAll();
