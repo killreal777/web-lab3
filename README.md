@@ -6,7 +6,9 @@
 - PostgreSQL
 - Hibernate
 
-![AREA_SVG](area.svg)
+__Интерфейс основной страницы__
+
+![INTERFACE](interface.png)
 
 __Диапазоны изменения данных__
 - X: (-3; 5)
