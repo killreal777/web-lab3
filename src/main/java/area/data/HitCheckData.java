@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 import jakarta.persistence.Embeddable;
 
 import java.io.Serializable;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Getter
 @Setter
@@ -17,7 +17,7 @@ import java.time.LocalTime;
 
 @Embeddable
 public class HitCheckData implements Serializable {
-    private LocalTime startTime;
+    private LocalDateTime startTime;
     private long executionTimeNano;
     private AreaDotData areaDotData;
     private boolean isHit;
