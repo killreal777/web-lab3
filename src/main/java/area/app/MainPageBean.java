@@ -1,20 +1,14 @@
 package area.app;
 
+import area.data.AreaDotData;
 import area.data.HitCheckData;
 import area.data.HitCheckServiceBean;
-import area.data.AreaDotData;
 import area.script.HitCheckScriptBean;
-
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.AccessLevel;
-
-import jakarta.inject.Named;
-import jakarta.inject.Inject;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.ejb.EJB;
 import jakarta.annotation.PostConstruct;
+import jakarta.ejb.EJB;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
+import jakarta.inject.Named;
 
 import java.io.Serializable;
 import java.util.Collections;
@@ -25,22 +19,14 @@ import java.util.List;
  * Provides: fields for area dot input, list for results output, methods for user actions.
  */
 
-@Getter
-@Setter
-@NoArgsConstructor
-
 @Named
 @ApplicationScoped
 public class MainPageBean implements Serializable {
 
     @EJB
-    @Getter(value=AccessLevel.NONE)
-    @Setter(value=AccessLevel.NONE)
     HitCheckServiceBean hitCheckService;
 
     @Inject
-    @Getter(value=AccessLevel.NONE)
-    @Setter(value=AccessLevel.NONE)
     HitCheckScriptBean hitCheckScript;
 
     private List<HitCheckData> resultsList;
@@ -48,6 +34,9 @@ public class MainPageBean implements Serializable {
     private float r;
     private float x;
     private float y;
+
+    public MainPageBean() {
+    }
 
 
     @PostConstruct
@@ -105,5 +94,29 @@ public class MainPageBean implements Serializable {
      */
     private float fixNegativeZero(float value) {
         return (value == 0) ? 0 : value;
+    }
+
+    public List<HitCheckData> getResultsList() {
+        return this.resultsList;
+    }
+
+    public float getR() {
+        return this.r;
+    }
+
+    public float getX() {
+        return this.x;
+    }
+
+    public float getY() {
+        return this.y;
+    }
+
+    public void setResultsList(List<HitCheckData> resultsList) {
+        this.resultsList = resultsList;
+    }
+
+    public void setR(float r) {
+        this.r = r;
     }
 }
