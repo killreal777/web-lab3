@@ -1,78 +1,83 @@
 package area.script;
 
 import area.data.AreaDotData;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.assertFalse;
+import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class HitCheckerTest {
-    private final HitChecker hitChecker = new HitChecker();
+    private static HitChecker hitChecker;
+
+    @BeforeAll
+    static void setup() {
+        hitChecker = new HitChecker();
+    }
 
     private boolean checkHit(float r, float x, float y) {
         return hitChecker.isHit(new AreaDotData(r, x, y));
     }
 
-    @Test
-    public void testHitQuarterCircle() {
-        // corners
-        assertTrue(checkHit(1, 0, 0));
-        assertTrue(checkHit(1, -1, 0));
-        assertTrue(checkHit(1, 0, 1));
-        // edges
-        assertTrue(checkHit(1, -0.5f, (float) Math.sqrt(3) / 2));
-        assertTrue(checkHit(1, 0, 0.73f));
-        // close to edges
-        assertFalse(checkHit(1, -0.5f, (float) Math.sqrt(3) / 2 + 0.0000001f));
-        assertFalse(checkHit(1, 0.0000001f, 0.73f));
-        // inside
-        assertTrue(checkHit(1, -0.567f, 0.234f));
-        // outside
-        assertFalse(checkHit(1, -1, 1));
+    private static Stream<Float> radii() {
+        return Stream.of(1f, 2f, 3f, 4f, 5f);
     }
 
-    @Test
-    public void testHitTriangle() {
+    @ParameterizedTest
+    @MethodSource("radii")
+    public void testHitQuarterCircleWithDifferentRadii(float r) {
         // corners
-        assertTrue(checkHit(1, 0, 0));
-        assertTrue(checkHit(1, 0.5f, 0));
-        assertTrue(checkHit(1, 0, -0.5f));
+        assertThat(checkHit(r, -1 * r, 0)).isTrue();
+        assertThat(checkHit(r, 0, r)).isTrue();
         // edges
-        assertTrue(checkHit(1, 0.3f, 0));
-        assertTrue(checkHit(1, 0.25f, -0.25f));
+        assertThat(checkHit(r, -0.5f * r, (float) Math.sqrt(3) / 2 * r)).isTrue();
+        assertThat(checkHit(r, 0, 0.73f * r)).isTrue();
         // close to edges
-        assertFalse(checkHit(1, 0.3f, 0.0000001f));
-        assertFalse(checkHit(1, 0.2500001f, -0.25f));
+        assertThat(checkHit(r, -0.5f * r, (float) Math.sqrt(3) / 2 * r + 0.0001f)).isFalse();
+        assertThat(checkHit(r, 0.0001f * r, 0.73f * r)).isFalse();
         // inside
-        assertTrue(checkHit(1, 0.2f, -0.15f));
+        assertThat(checkHit(r, -0.567f * r, 0.234f * r)).isTrue();
         // outside
-        assertFalse(checkHit(1, 1, -1));
+        assertThat(checkHit(r, -1 * r, 1 * r)).isFalse();
     }
 
-    @Test
-    public void testHitRectangle() {
+    @ParameterizedTest
+    @MethodSource("radii")
+    public void testHitTriangleWithDifferentRadii(float r) {
         // corners
-        assertTrue(checkHit(1, 0, 0));
-        assertTrue(checkHit(1, -1, 0));
-        assertTrue(checkHit(1, -1, -0.5f));
-        assertTrue(checkHit(1, 0, -0.5f));
+        assertThat(checkHit(r, 0, 0)).isTrue();
+        assertThat(checkHit(r, 0.5f * r, 0)).isTrue();
+        assertThat(checkHit(r, 0, -0.5f * r)).isTrue();
         // edges
-        assertTrue(checkHit(1, -1, -0.3f));
-        assertTrue(checkHit(1, -0.853f, -0.5f));
+        assertThat(checkHit(r, 0.3f * r, 0)).isTrue();
+        assertThat(checkHit(r, 0.25f * r, -0.25f * r)).isTrue();
         // close to edges
-        assertFalse(checkHit(1, -1.0000001f, -0.3f));
-        assertFalse(checkHit(1, -0.853f, -0.5000001f));
+        assertThat(checkHit(r, 0.3f * r, 0.0001f * r)).isFalse();
+        assertThat(checkHit(r, 0.2501f * r, -0.25f * r)).isFalse();
         // inside
-        assertTrue(checkHit(1, -0.2f, -0.11f));
+        assertThat(checkHit(r, 0.2f * r, -0.15f * r)).isTrue();
         // outside
-        assertFalse(checkHit(1, -0.853f, -1));
+        assertThat(checkHit(r, 1 * r, -1 * r)).isFalse();
     }
 
-    @Test
-    public void testRadiusSwitch() {
-        assertTrue(checkHit(3, 0, 0));
-        assertTrue(checkHit(2, -1, (float) Math.sqrt(3)));
-        assertTrue(checkHit(4, 2, 0));
-        assertFalse(checkHit(3, 0.7500001f, -0.75f));
+    @ParameterizedTest
+    @MethodSource("radii")
+    public void testHitRectangleWithDifferentRadii(float r) {
+        // corners
+        assertThat(checkHit(r, -1 * r, 0)).isTrue();
+        assertThat(checkHit(r, -1 * r, -0.5f * r)).isTrue();
+        assertThat(checkHit(r, 0, -0.5f * r)).isTrue();
+        // edges
+        assertThat(checkHit(r, -1 * r, -0.3f * r)).isTrue();
+        assertThat(checkHit(r, -0.853f * r, -0.5f * r)).isTrue();
+        // close to edges
+        assertThat(checkHit(r, -1.0001f * r, -0.3f * r)).isFalse();
+        assertThat(checkHit(r, -0.853f * r, -0.5001f * r)).isFalse();
+        // inside
+        assertThat(checkHit(r, -0.2f * r, -0.11f * r)).isTrue();
+        // outside
+        assertThat(checkHit(r, -0.853f * r, -1 * r)).isFalse();
     }
 }
