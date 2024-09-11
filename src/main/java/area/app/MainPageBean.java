@@ -22,12 +22,18 @@ import java.util.List;
 @Named
 @ApplicationScoped
 public class MainPageBean implements Serializable {
+    private HitCheckServiceBean hitCheckService;
+    private HitCheckScriptBean hitCheckScript;
 
     @EJB
-    HitCheckServiceBean hitCheckService;
+    public void setHitCheckService(HitCheckServiceBean hitCheckService) {
+        this.hitCheckService = hitCheckService;
+    }
 
     @Inject
-    HitCheckScriptBean hitCheckScript;
+    public void setHitCheckScript(HitCheckScriptBean hitCheckScript) {
+        this.hitCheckScript = hitCheckScript;
+    }
 
     private List<HitCheckData> resultsList;
 
