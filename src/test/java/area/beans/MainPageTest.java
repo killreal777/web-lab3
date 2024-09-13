@@ -1,4 +1,4 @@
-package area.app;
+package area.beans;
 
 import area.data.AreaDotData;
 import area.data.HitCheckData;
@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-class MainPageBeanTest {
+class MainPageTest {
 
     @Mock
     private HitCheckServiceBean hitCheckService;
@@ -26,7 +26,13 @@ class MainPageBeanTest {
     private HitCheckScriptBean hitCheckScript;
 
     @InjectMocks
-    private MainPageBean mainPageBean;
+    private MainPage mainPage;
+
+    @Mock
+    private HitCount hitCount;
+
+    @Mock
+    private AverageInterval averageInterval;
 
     @BeforeEach
     void setUp() {
@@ -55,9 +61,9 @@ class MainPageBeanTest {
         HitCheckData hitCheckData3 = new HitCheckData(null, 300L, null, false);
         when(hitCheckService.getAll()).thenReturn(new ArrayList<>(List.of(hitCheckData1, hitCheckData2, hitCheckData3)));
 
-        mainPageBean.updateResultsList();
+        mainPage.updateResultsList();
 
-        assertThat(mainPageBean.getResultsList()).containsExactly(hitCheckData3, hitCheckData2, hitCheckData1);
+        assertThat(mainPage.getResultsList()).containsExactly(hitCheckData3, hitCheckData2, hitCheckData1);
         verify(hitCheckService).getAll();
     }
 
@@ -66,11 +72,11 @@ class MainPageBeanTest {
         HitCheckData hitCheckData = new HitCheckData(null, 100L, null, false);
         when(hitCheckScript.execute(any(AreaDotData.class))).thenReturn(hitCheckData);
 
-        mainPageBean.checkHit();
+        mainPage.checkHit();
 
         verify(hitCheckService).add(hitCheckData);
-        assertThat(mainPageBean.getResultsList().size()).isEqualTo(1);
-        assertThat(mainPageBean.getResultsList().get(0)).isEqualTo(hitCheckData);
+        assertThat(mainPage.getResultsList().size()).isEqualTo(1);
+        assertThat(mainPage.getResultsList().get(0)).isEqualTo(hitCheckData);
     }
 
     @Test
@@ -80,15 +86,15 @@ class MainPageBeanTest {
         HitCheckData hitCheckData3 = new HitCheckData(null, 300L, null, false);
         when(hitCheckScript.execute(any(AreaDotData.class))).thenReturn(hitCheckData1, hitCheckData2, hitCheckData3);
 
-        mainPageBean.checkHit();
-        mainPageBean.checkHit();
-        mainPageBean.checkHit();
+        mainPage.checkHit();
+        mainPage.checkHit();
+        mainPage.checkHit();
 
-        assertThat(mainPageBean.getResultsList().size()).isEqualTo(3);
+        assertThat(mainPage.getResultsList().size()).isEqualTo(3);
 
-        mainPageBean.cleanResults();
+        mainPage.cleanResults();
 
         verify(hitCheckService).clean();
-        assertThat(mainPageBean.getResultsList()).isEmpty();
+        assertThat(mainPage.getResultsList()).isEmpty();
     }
 }

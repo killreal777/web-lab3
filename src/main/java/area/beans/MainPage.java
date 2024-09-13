@@ -1,4 +1,4 @@
-package area.app;
+package area.beans;
 
 import area.data.AreaDotData;
 import area.data.HitCheckData;
@@ -18,12 +18,20 @@ import java.util.List;
  * CDI bean. For main page.
  * Provides: fields for area dot input, list for results output, methods for user actions.
  */
-
 @Named
 @ApplicationScoped
-public class MainPageBean implements Serializable {
+public class MainPage implements Serializable {
     private HitCheckServiceBean hitCheckService;
     private HitCheckScriptBean hitCheckScript;
+
+    private HitCount hitCount;
+    private AverageInterval averageInterval;
+
+    private List<HitCheckData> resultsList;
+
+    private float r;
+    private float x;
+    private float y;
 
     @EJB
     public void setHitCheckService(HitCheckServiceBean hitCheckService) {
@@ -35,21 +43,20 @@ public class MainPageBean implements Serializable {
         this.hitCheckScript = hitCheckScript;
     }
 
-    private List<HitCheckData> resultsList;
-
-    private float r;
-    private float x;
-    private float y;
-
-    public MainPageBean() {
+    @Inject
+    public void setHitCount(HitCount hitCount) {
+        this.hitCount = hitCount;
     }
 
+    @Inject
+    public void setAverageInterval(AverageInterval averageInterval) {
+        this.averageInterval = averageInterval;
+    }
 
     @PostConstruct
     public void init() {
         updateResultsList();
     }
-
 
     /**
      * Executes hit check script with inputted parameters.
@@ -78,8 +85,9 @@ public class MainPageBean implements Serializable {
     public void updateResultsList() {
         resultsList = hitCheckService.getAll();
         Collections.reverse(resultsList);
+        hitCount.update(resultsList);
+        averageInterval.update(resultsList);
     }
-
 
     /**
      * X setter with negative zero fixing.

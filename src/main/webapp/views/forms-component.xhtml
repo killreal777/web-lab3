@@ -8,7 +8,7 @@
     <h:form id="check-form">
         <h:panelGrid columns="2">
             <h:outputText value="Radius: "/>
-            <h:selectOneMenu id="r" value="#{mainPageBean.r}" styleClass="input menu"
+            <h:selectOneMenu id="r" value="#{mainPage.r}" styleClass="input menu"
                              required="true" requiredMessage="R: required. " converterMessage="R: number. ">
                 <f:selectItem itemValue="1" />
                 <f:selectItem itemValue="2" />
@@ -18,13 +18,13 @@
             </h:selectOneMenu>
 
             <h:outputText value="Coordinate X: "/>
-            <h:inputText id="x" value="#{mainPageBean.x}" styleClass="input text" a:placeholder="(-3; 5)"
+            <h:inputText id="x" value="#{mainPage.x}" styleClass="input text" a:placeholder="(-3; 5)"
                          required="true" requiredMessage="X: required. " converterMessage="X: number. ">
                 <f:validator validatorId="xValidator"/>
             </h:inputText>
 
             <h:outputText value="Coordinate Y: "/>
-            <h:inputText id="y" value="#{mainPageBean.y}" styleClass="input text" a:placeholder="(-4; 4)"
+            <h:inputText id="y" value="#{mainPage.y}" styleClass="input text" a:placeholder="(-4; 4)"
                          required="true" requiredMessage="Y: required. " converterMessage="Y: number. ">
                 <f:validator validatorId="yValidator"/>
             </h:inputText>
@@ -35,11 +35,11 @@
         <h:message for="y"/>
         <br/>
 
-        <h:commandButton id="check-button" value="Check" action="#{mainPageBean.checkHit()}" styleClass="input button"/>
+        <h:commandButton id="check-button" value="Check" action="#{mainPage.checkHit()}" styleClass="input button"/>
     </h:form>
 
     <h:form>
-        <h:commandButton value="Clean" action="#{mainPageBean.cleanResults()}" styleClass="input button"/>
+        <h:commandButton value="Clean" action="#{mainPage.cleanResults()}" styleClass="input button"/>
     </h:form>
 
     <h:button value="Start page" outcome="start-page" styleClass="input button"/>
