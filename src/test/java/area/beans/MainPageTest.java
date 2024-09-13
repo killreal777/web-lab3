@@ -32,7 +32,7 @@ class MainPageTest {
     private HitCount hitCount;
 
     @Mock
-    private AverageInterval averageInterval;
+    private Square square;
 
     @BeforeEach
     void setUp() {

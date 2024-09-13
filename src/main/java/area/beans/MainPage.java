@@ -25,7 +25,7 @@ public class MainPage implements Serializable {
     private HitCheckScriptBean hitCheckScript;
 
     private HitCount hitCount;
-    private AverageInterval averageInterval;
+    private Square square;
 
     private List<HitCheckData> resultsList;
 
@@ -49,8 +49,8 @@ public class MainPage implements Serializable {
     }
 
     @Inject
-    public void setAverageInterval(AverageInterval averageInterval) {
-        this.averageInterval = averageInterval;
+    public void setSquare(Square square) {
+        this.square = square;
     }
 
     @PostConstruct
@@ -86,7 +86,7 @@ public class MainPage implements Serializable {
         resultsList = hitCheckService.getAll();
         Collections.reverse(resultsList);
         hitCount.update(resultsList);
-        averageInterval.update(resultsList);
+        square.update(r);
     }
 
     /**

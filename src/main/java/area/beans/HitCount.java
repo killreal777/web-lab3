@@ -29,13 +29,18 @@ public class HitCount extends NotificationBroadcasterSupport implements HitCount
 
     public void update(List<HitCheckData> resultsList) {
         this.resultsList = resultsList;
+        noticeTreeMisses();
+    }
 
-        if (resultsList.isEmpty()) return;
+    private void noticeTreeMisses() {
+        if (resultsList.size() < 3) return;
 
-        var lastResult = resultsList.get(0);
+        var res0 = resultsList.get(0);
+        var res1 = resultsList.get(1);
+        var res2 = resultsList.get(2);
 
-        if (!lastResult.isHit()) {
-            Notification notification = new Notification("Miss", this, sequenceNumber++);
+        if (!res0.isHit() && !res1.isHit() && !res2.isHit()) {
+            Notification notification = new Notification("3 misses", this, sequenceNumber++);
             sendNotification(notification);
         }
     }
@@ -46,7 +51,7 @@ public class HitCount extends NotificationBroadcasterSupport implements HitCount
     }
 
     @Override
-    public long getHitDots() {
-        return resultsList.stream().filter(HitCheckData::isHit).count();
+    public long getMissedDots() {
+        return resultsList.size() - resultsList.stream().filter(HitCheckData::isHit).count();
     }
 }
